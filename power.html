@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/animate.css">
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/style.css" rel="stylesheet" />
+  <link rel="icon" href="../media/images/logo.svg">
+  <title>من نحن</title>
+</head>
+
+<body>
+  <nav class=" py-3  d-flex justify-content-between px-4 align-items-center"
+    style="background-color: var(--primary);backdrop-filter: blur(3px);">
+    <img src="../media/images/logo.svg" alt="logo" style="width: 20%;">
+    <div class="">
+      <ul class="text-white d-flex gap-3 align-items-center  m-0">
+        <li><a href="/">الصفحه الرئيسية</a></li>
+        <li><a href="./power.html">مصادر الطاقة</a></li>
+        <li><a href="./aboutus.html">من نحن؟</a></li>
+      </ul>
+    </div>
+    <div id="auth" class="d-flex gap-2">
+    </div>
+  </nav>
+  <section class="content p-5 ">
+    <div class="educational-material text-white">
+      <h2 class="text-center  mb-5 col-12" style="color: var(--primary);">بعض مصادر الطاقة المتجددة</h2>
+      <div class="row gap-4 mb-4">
+        <div class="item hydrogen-energy position-relative rounded  overflow-hidden col-12 col-md"
+          style=" height: 300px;">
+          <div class="overlay"></div>
+          <div class="d-grid h-100 justify-content-center align-items-center z-3 position-relative "
+            style=" backdrop-filter:blur(2px);  width: fit-content; margin: 0 auto">
+            <div class="text-center">
+              <h2 class="text-center mb-5" style="font-size: 39px;">الهيدروجين الأخضر</h2>
+              <a href="./hydrogen.html" class="link pb-2 text-primay text-bold "> اقرأ المزيد > </a>
+            </div>
+          </div>
+        </div>
+        <div class="item Hydroelectric-adhesive position-relative rounded overflow-hidden col-12 col-md"
+          style=" height: 300px;">
+          <div class="overlay"></div>
+          <div class="d-grid h-100 justify-content-center align-items-center z-3 position-relative "
+            style=" backdrop-filter:blur(2px); width: fit-content; margin: 0 auto;">
+            <div class="text-center">
+              <h2 class="text-center mb-5" style="font-size: 39px;">الطاقة الكهرومائية</h2>
+              <a href="./hdropower.html" class="link pb-2 text-primay text-bold "> اقرأ المزيد > </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row gap-4 mb-4">
+        <div class="item thermal-energy position-relative rounded overflow-hidden  col-12 col-md"
+          style=" height: 300px;">
+          <div class="overlay"></div>
+          <div class="d-grid h-100 justify-content-center align-items-center z-3 position-relative "
+            style=" backdrop-filter:blur(2px); width: fit-content; margin: 0 auto;">
+            <div class="text-center">
+              <h2 class="text-center mb-5" style="font-size: 39px;">الطاقة الحرارية</h2>
+              <a href="./thermal.html" class="link pb-2 text-primay text-bold "> اقرأ المزيد > </a>
+            </div>
+          </div>
+        </div>
+        <div class="item wind-details position-relative rounded overflow-hidden  col-12 col-md" style=" height: 300px;">
+          <div class="overlay"></div>
+          <div class="d-grid h-100 justify-content-center align-items-center z-3 position-relative "
+            style=" backdrop-filter:blur(2px); width: fit-content; margin: 0 auto;">
+            <div class="text-center">
+              <h2 class="text-center mb-5" style="font-size: 39px;">طاقة الرياح</h2>
+              <a href="./windpower.html" class="link pb-2 text-primay text-bold "> اقرأ المزيد > </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <footer class="bg-primary py-3 mt-5 text-center ">
+    <p>للتوصل معنا :</p>
+    <p>masder@gmail.com or +201151742768 </p>
+  </footer>
+
+  <script>
+
+
+    const authContainer = document.getElementById("auth");
+
+    const content = `
+    <a class="btn" href="./login.html">تسجيل الدخول</a>
+    <a class="btn" href="./signup.html">الإشترك</a>
+    `;
+    const userName = window.localStorage.getItem("userName");
+
+    const logout = async () => {
+      await window.localStorage.removeItem("userName");
+      window.location.pathname = "./ogin.html"
+    }
+    if (!userName) {
+      authContainer.innerHTML = content;
+    } else {
+      const userNameContainer = `
+    <div class="d-flex gap-2 align-items-center">
+      <p class="text-white m-0 text-capitalize">${userName}</p>
+      <button class="btn  text-primary" onclick="logout()">تسجيل الخروج</button>
+    </div>
+
+    `
+      authContainer.innerHTML = userNameContainer
+    }
+
+  </script>
+</body>
+
+</html>

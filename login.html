@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,  initial-scale=1.0">
+  <link rel="stylesheet" href="../css/login.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="container">
+      <div class="drop">
+        <div class="content">
+          <h2>sign in</h2>
+          <form id="signInForm" onsubmit="submitForm (event)">
+            <div class="inputbox">
+              <input type="text" maxlength="20" id="username" pladfceholder="username" required>
+            </div>
+            <div class="inputbox">
+              <input type="password" id="password" placeholder="password" required>
+            </div>
+            <div class="inputbox">
+              <input type="submit" value="login">
+            </div>
+          </form>
+        </div>
+      </div>
+      <a href="#" class="btns ">forget password</a>
+      <a href="./signup.html" class="btns signup">sign up</a>
+    </div>
+  </div>
+  <script>
+    const signInForm = document.getElementById("signInForm");
+    let error = document.createElement("p")
+    error.setAttribute("class", "err");
+
+    const submitForm = async (event) => {
+      event.preventDefault();
+      const userName = document.getElementById("username");
+      const password = document.getElementById("password");
+      const inputBox = document.querySelectorAll(".inputbox");
+      console.log(userName.value.length);
+      if (userName.value.length > 10) {
+        error.textContent = "user name must be less than 10 characters."
+        signInForm.insertBefore(error, inputBox[1])
+        console.log(error);
+        return
+      }
+      await window.localStorage.setItem("userName", userName.value)
+      signInForm.reset();
+      window.location.pathname = "/"
+    }
+
+  </script>
+</body>
+
+</html>

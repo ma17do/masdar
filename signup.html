@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,  initial-scale=1.0">
+  <link rel="stylesheet" href="../css/login.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="container">
+      <div class="drop" style="height: 410px">
+        <div class="content">
+          <h2>sign up</h2>
+          <form id="signUpForm" onsubmit="submitForm(event)">
+            <div class="inputbox">
+              <input type="text" id="username" placeholder="username" required>
+            </div>
+            <div class="inputbox">
+              <input type="email" id="email" placeholder="email adress" required>
+            </div>
+            <div class="inputbox">
+              <input type="password" id="password" placeholder="password" required>
+            </div>
+            <div class="inputbox">
+              <input type="password" placeholder="confirm password" required>
+            </div>
+            <div class="inputbox">
+              <input type="submit" value="sign up">
+            </div>
+          </form>
+        </div>
+      </div>
+      <a href="./login.html" class="btns signup">sign in</a>
+    </div>
+  </div>
+  <script>
+    const signUpForm = document.getElementById("signUpForm");
+
+    let error = document.createElement("p")
+    error.setAttribute("class", "err");
+
+    const submitForm = async (event) => {
+      event.preventDefault();
+      const userName = document.getElementById("username");
+      const password = document.getElementById("password");
+      const inputBox = document.querySelectorAll(".inputbox");
+
+
+      await window.localStorage.setItem("userName", userName.value)
+
+      if (userName.value.length > 10) {
+        error.textContent = "user name must be less than 10 characters."
+        signUpForm.insertBefore(error, inputBox[1])
+        return
+      }
+
+      signUpForm.reset();
+
+      window.location.pathname = "/"
+    }
+
+
+  </script>
+</body>
+
+</html>
